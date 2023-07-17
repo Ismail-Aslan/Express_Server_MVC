@@ -7,16 +7,6 @@ const morgan = require("morgan");
 const api = require("./api");
 const globalErrorHandler = require("./middleware/globalErrorHandler");
 const AppError = require('./utils/appError');
-const { sampledb } = require("./models/index");
-
-// connect and sync db
-sampledb.sync({ force: false })
-    .then(() => console.log("synced sampledb successfully!"))
-    .catch(err => console.log("unable to sync sampledb!", err));
-
-sampledb.authenticate()
-    .then(() => console.log("connected sampledb successfully!"))
-    .catch(err => console.log("unable to connect sampledb!", err));
 
 // to parse the incoming requests with JSON payloads
 app.use(express.json());
